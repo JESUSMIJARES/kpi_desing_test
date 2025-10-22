@@ -10,7 +10,7 @@ looker.plugins.visualizations.add({
     backgroundColor: {
       type: "string",
       label: "Background Color",
-      default: "#007BFF"
+      default: "#FFFFFF"
     },
     textColor: {
       type: "string",
@@ -24,6 +24,12 @@ looker.plugins.visualizations.add({
     }
   },
   create: function (element, config) {
+
+    const fontLink = document.createElement("link");
+    fontLink.href = "https://fonts.googleapis.com/css2?family=Neuwelt:wght@400;700&display=swap";
+    fontLink.rel = "stylesheet";
+    document.head.appendChild(fontLink);
+    
     element.innerHTML = `<div id="kpi-container"></div>`;
   },
   updateAsync: function (data, element, config, queryResponse, details, done) {
@@ -38,6 +44,7 @@ looker.plugins.visualizations.add({
         border-bottom: 4px solid ${config.borderColor};
         text-align: center;
         box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+         font-family: 'Neuwelt', sans-serif;
       ">
         ${value}
       </div>
