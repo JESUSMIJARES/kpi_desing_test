@@ -25,6 +25,9 @@ looker.plugins.visualizations.add({
   },
   create: function (element, config) {
 
+    element.style.background = "transparent";
+    element.style.boxShadow = "none";
+
     const fontLink = document.createElement("link");
     fontLink.href = "https://fonts.googleapis.com/css2?family=Neuwelt:wght@400;700&display=swap";
     fontLink.rel = "stylesheet";
