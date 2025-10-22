@@ -1,0 +1,5 @@
+{
+  "label": "KPI Card",
+  "id": "kpi_card",
+  "vis_class": "kpi_card.js"
+}
