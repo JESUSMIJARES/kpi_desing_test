@@ -10,12 +10,17 @@ looker.plugins.visualizations.add({
     backgroundColor: {
       type: "string",
       label: "Background Color",
-      default: "#f4f4f4"
+      default: "#007BFF"
     },
     textColor: {
       type: "string",
       label: "Text Color",
       default: "#333"
+    },
+     borderColor: {
+      type: "string",
+      label: "Color del borde inferior",
+      default: "#007BFF" // Azul también
     }
   },
   create: function (element, config) {
@@ -30,6 +35,7 @@ looker.plugins.visualizations.add({
         background: ${config.backgroundColor};
         font-size: ${config.fontSize};
         color: ${config.textColor};
+        border-bottom: 4px solid ${config.borderColor};
         text-align: center;
         box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
       ">
