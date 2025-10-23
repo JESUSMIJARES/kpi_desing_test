@@ -41,7 +41,8 @@ looker.plugins.visualizations.add({
     const field = queryResponse.fields.measures[0].name;
     const cell = data[0][field];
     const value = cell.rendered || cell.value || ''
-    
+    const valueHTML = LookerCharts.Utils.htmlForCell(value);
+
     element.innerHTML = `
       <div style="
         border-radius: 10px;
@@ -54,7 +55,7 @@ looker.plugins.visualizations.add({
         box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
          font-family: 'Neuwelt', sans-serif;
       ">
-        ${value}
+        ${valueHTML}
       </div>
     `;
     done();
