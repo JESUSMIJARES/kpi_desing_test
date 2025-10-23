@@ -36,7 +36,12 @@ looker.plugins.visualizations.add({
     element.innerHTML = `<div id="kpi-container"></div>`;
   },
   updateAsync: function (data, element, config, queryResponse, details, done) {
-    const value = data[0][queryResponse.fields.measures[0].name].rendered;
+    //const value = data[0][queryResponse.fields.measures[0].name].rendered;
+
+    const field = queryResponse.fields.measures[0].name;
+    const cell = data[0][field];
+    const value = cell.rendered || cell.value || ''
+    
     element.innerHTML = `
       <div style="
         border-radius: 10px;
