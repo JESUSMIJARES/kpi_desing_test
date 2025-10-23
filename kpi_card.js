@@ -33,17 +33,22 @@ looker.plugins.visualizations.add({
     fontLink.rel = "stylesheet";
     document.head.appendChild(fontLink);
     
-    element.innerHTML = `<div id="kpi-container"></div>`;
+    //element.innerHTML = `<div id="kpi-container"></div>`;
+
+    const container = document.createElement("div");
+    container.id = "kpi-container";
+    element.appendChild(container);
   },
   updateAsync: function (data, element, config, queryResponse, details, done) {
     //const value = data[0][queryResponse.fields.measures[0].name].rendered;
+    const container = element.querySelector("#kpi-container");
 
     const field = queryResponse.fields.measures[0].name;
     const cell = data[0][field];
     const value = cell.rendered || cell.value || ''
     const valueHTML = LookerCharts.Utils.htmlForCell(cell);
 
-    element.innerHTML = `
+    container.innerHTML = `
       <div style="
         border-radius: 10px;
         padding: 20px;
