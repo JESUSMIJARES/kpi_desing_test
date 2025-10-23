@@ -43,13 +43,20 @@ looker.plugins.visualizations.add({
     const cell = data[0][field];
     const value = cell.rendered || cell.value || ''
 
+      const theme = looker?.themes?.activeTheme || {};
+
+// Usar colores del tema si existen, de lo contrario usar los configurados
+    const textColor = theme.font_color || config.textColor;
+    const backgroundColor = theme.tile_background_color || config.backgroundColor;
+    const borderColor = theme.primary_color || config.borderColor;
+    
     element.innerHTML = `
       <div style="
         border-radius: 10px;
         padding: 20px;
-        background: ${config.backgroundColor};
+        background: ${backgroundColor};
         font-size: ${config.fontSize};
-        color: ${config.textColor};
+        color: ${textColor};
         border-bottom: 4px solid ${config.borderColor};
         text-align: center;
         box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
