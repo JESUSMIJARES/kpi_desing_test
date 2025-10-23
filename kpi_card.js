@@ -41,7 +41,7 @@ looker.plugins.visualizations.add({
     const field = queryResponse.fields.measures[0].name;
     const cell = data[0][field];
     const value = cell.rendered || cell.value || ''
-    const valueHTML = LookerCharts.Utils.htmlForCell(value);
+    const valueHTML = LookerCharts.Utils.htmlForCell(cell);
 
     element.innerHTML = `
       <div style="
