@@ -33,11 +33,7 @@ looker.plugins.visualizations.add({
     fontLink.rel = "stylesheet";
     document.head.appendChild(fontLink);
     
-    //element.innerHTML = `<div id="kpi-container"></div>`;
-
-    const container = document.createElement("div");
-    container.id = "kpi-container";
-    element.appendChild(container);
+    element.innerHTML = `<div id="kpi-container"></div>`;
   },
   updateAsync: function (data, element, config, queryResponse, details, done) {
     //const value = data[0][queryResponse.fields.measures[0].name].rendered;
@@ -46,9 +42,8 @@ looker.plugins.visualizations.add({
     const field = queryResponse.fields.measures[0].name;
     const cell = data[0][field];
     const value = cell.rendered || cell.value || ''
-    const valueHTML = LookerCharts.Utils.htmlForCell(cell);
 
-    container.innerHTML = `
+    element.innerHTML = `
       <div style="
         border-radius: 10px;
         padding: 20px;
@@ -60,7 +55,7 @@ looker.plugins.visualizations.add({
         box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
          font-family: 'Neuwelt', sans-serif;
       ">
-        ${valueHTML}
+        ${value}
       </div>
     `;
     done();
